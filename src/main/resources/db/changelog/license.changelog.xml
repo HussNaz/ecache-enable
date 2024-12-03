@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="Change in License table" author="Nazmul">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="LICENSE"/>
+            </not>
+        </preConditions>
+        <createTable tableName="LICENSE">
+            <column name="LICENSE_ID" type="NUMBER">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="LICENSE_CODE" type="VARCHAR2(100 CHAR)">
+                <constraints nullable="false" />
+            </column>
+            <column name="COMPANY_BIN_ID" type="NUMBER"/>
+            <column name="MINISTRY_ID" type="NUMBER"/>
+            <column name="ISSUE_DATE" type="DATE">
+            </column>
+            <column name="EXPIRATION_DATE" type="DATE"/>
+            <column name="STATUS" type="VARCHAR2(20 BYTE)">
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="setting default value for Issue_DATE" author="Nazmul">
+        <sql>
+            <![CDATA[
+                ALTER TABLE LICENSE MODIFY (ISSUE_DATE DEFAULT SYSDATE);
+            ]]>
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

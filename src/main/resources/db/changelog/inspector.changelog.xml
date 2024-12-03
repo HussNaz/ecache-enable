@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="Change set in inspector" author="Nazmul">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="INSPECTOR"/>
+            </not>
+        </preConditions>
+        <createTable tableName="INSPECTOR">
+            <column name="INSPECTOR_ID" type="NUMBER(19,0)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR2(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PHONE" type="VARCHAR2(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMAIL" type="VARCHAR2(200)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Add Last Name for Inspector" author="Nazmul">
+        <addColumn tableName="INSPECTOR">
+            <column name="LAST_NAME" type="VARCHAR2(50)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="Changing LAST_NAME to Last_name2" author="Nazmul">
+        <renameColumn tableName="INSPECTOR" oldColumnName="LAST_NAME"
+                      newColumnName="Last_name2" columnDataType="VARCHAR2(50)"/>
+    </changeSet>
+
+    <changeSet id="Changing LAST_NAME2 to Last_name" author="Nazmul">
+        <renameColumn tableName="INSPECTOR" oldColumnName="LAST_NAME"
+                      newColumnName="Last_name" columnDataType="VARCHAR2(50)"/>
+    </changeSet>
+
+</databaseChangeLog>
