@@ -37,7 +37,7 @@
     </changeSet>
 
     <changeSet id="Changing LAST_NAME2 to Last_name" author="Nazmul">
-        <renameColumn tableName="INSPECTOR" oldColumnName="LAST_NAME"
+        <renameColumn tableName="INSPECTOR" oldColumnName="LAST_NAME2"
                       newColumnName="Last_name" columnDataType="VARCHAR2(50)"/>
     </changeSet>
 

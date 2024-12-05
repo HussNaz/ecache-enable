@@ -4,8 +4,12 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
-    <!-- Include individual changelogs-->
-    <include file="db/changelog/license.changelog.xml"/>
-    <include file="db/changelog/inspector.changelog.xml"/>
-    <include file="db/changelog/license-ministry-index.changelog.xml"/>
+
+
+    <changeSet id="add Index Ministry ID" author="Nazmul">
+        <createIndex tableName="LICENSE" indexName="IDX_LICENSE_MIN_ID">
+            <column name="MINISTRY_ID"/>
+        </createIndex>
+    </changeSet>
+
 </databaseChangeLog>
